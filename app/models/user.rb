@@ -14,20 +14,7 @@ class User < ApplicationRecord
     
   validates :password,
     presence: true,
-    length: { minimum: 6 },
-    format: {
-      with: /[0-9]/,
-      message: "数字を含む必要があります。"
-    }
-  validates  :password,
-    format: {
-      with: /[a-z]/,
-      message: "小文字アルファベットを含む必要があります。"
-    }
-  validates  :password,
-    format: {
-      with: /[A-Z]/,
-      message: "大文字アルファベットを含む必要があります。"
-    }
+    length: { minimum: 6 }
+
   has_secure_password
 end
