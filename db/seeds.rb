@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+
+User.delete_all
+User.connection.execute("delete from sqlite_sequence where name='users'")
+User.create([{
+  name: "Masamoto Miyata",
+  email: "miyata@sincere-co.com",
+  password: "111111"
+}])
