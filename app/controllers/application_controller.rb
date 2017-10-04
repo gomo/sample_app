@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # rescue_from ActiveRecord::RecordNotFound, with: :render_404
   # rescue_from ActionController::RoutingError, with: :render_404
   # rescue_from Exception, with: :render_500
+  before_action :check_trailing_slash
   
   def render_404
     render template: 'errors/error_404', status: 404, layout: 'application', content_type: 'text/html'
@@ -13,15 +14,18 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   include SessionsHelper
-  before_action :check_trailing_slash!
 
   def hello
     render html: "hello, world!"
   end
 
   private
-    def check_trailing_slash!
-      uri = request.env["REQUEST_URI"]
-      raise ActionController::RoutingError.new("The all path must not end with a slash.") if uri && uri != "/" && uri.end_with?("/")
+    def check_trailing_slash
+      end_with_slash = request.original_url.end_with?("/")
+      if action_name == 'index' then
+        raise ActionController::RoutingError.new("The URL of the index action must end with a slash.") unless end_with_slash
+      else
+        raise ActionController::RoutingError.new("The URL of the non-index action MUST NOT end with a slash.") if end_with_slash
+      end
     end
 end
