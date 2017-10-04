@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
     def check_trailing_slash
       end_with_slash = request.original_url.end_with?("/")
       if action_name == 'index' then
-        raise ActionController::RoutingError.new("The URL of the index action must end with a slash.") unless end_with_slash
+        raise ActionController::RoutingError.new("The URL of the index action must end with a slash.") unless end_with_slash && request.get?
       else
-        raise ActionController::RoutingError.new("The URL of the non-index action MUST NOT end with a slash.") if end_with_slash
+        raise ActionController::RoutingError.new("The URL of the non-index action MUST NOT end with a slash.") if end_with_slash && request.get?
       end
     end
 end
