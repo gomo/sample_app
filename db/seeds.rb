@@ -13,7 +13,8 @@ User.connection.execute("delete from sqlite_sequence where name='users'")
 User.create([{
   name: "Masamoto Miyata",
   email: "miyata@sincere-co.com",
-  password: "111111"
+  password: "111111",
+  admin: true
 }])
 
 
