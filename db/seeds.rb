@@ -9,7 +9,6 @@
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 User.delete_all
-User.connection.execute("delete from sqlite_sequence where name='users'")
 User.create([{
   name: "Masamoto Miyata",
   email: "miyata@sincere-co.com",
