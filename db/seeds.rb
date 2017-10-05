@@ -10,9 +10,9 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 User.delete_all
 User.create([{
-  name: "Masamoto Miyata",
-  email: "miyata@sincere-co.com",
-  password: "111111",
+  name: "Foo Bar",
+  email: "foobar@example.com",
+  password: "password",
   admin: true,
   activated: true,
   activated_at: Time.zone.now
