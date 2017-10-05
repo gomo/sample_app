@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/users', to: 'users#index',   trailing_slash: true
-  resources :users
+
+  get '/users/', to: 'users#index',   trailing_slash: true
+  resources :users, except: [:index]
+  
+  resources :account_activations, only: [:edit]
 
 
   # get '*path', controller: 'application', action: 'render_404'
