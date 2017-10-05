@@ -95,4 +95,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: 'delete', count: 0
   end
 
+  test "not display non-activated user in index and show" do
+    get signup_path
+    post users_path, params: { user: {
+      name:  "Non Activated User",
+      email: "non-activated@example.com",
+      password:              "password",
+      password_confirmation: "password" 
+    }}
+    user = assigns(:user)
+    follow_redirect!
+
+    log_in_as(@non_admin)
+    # リストにアクティベートしていないユーザーがいないかチェック
+    # 本当リストのページにオーダーをつけて、2ページ目じゃなくてユーザーの総数とPerPageからページを割り出すが省略。ID DESCにして1ページ目でチェックするのがいいかも。
+    get users_path(page: 2)
+
+    assert_select "a", text: "Non Activated User", count: 0
+
+    # showアクションが出ないかチェック。
+    get user_path(user)
+    assert_redirected_to root_url
+  end
 end
