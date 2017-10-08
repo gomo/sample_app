@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
+  resources :microposts,          only: [:create, :destroy]
+
 
   # get '*path', controller: 'application', action: 'render_404'
 end
