@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+
+ActiveSupport::Inflector.inflections(:ja) do |inflect|
+  ActiveSupport::Inflector.inflections(:en).plurals.each do |dic|
+    inflect.plural dic[0], dic[1]
+  end
+end
