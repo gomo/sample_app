@@ -64,6 +64,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    composite_primary_keys (10.0.0)
+      activerecord (~> 5.1.0)
     concurrent-ruby (1.0.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
@@ -398,6 +400,7 @@ DEPENDENCIES
   byebug (= 9.0.6)
   carrierwave
   coffee-rails (= 4.2.2)
+  composite_primary_keys
   faker (= 1.8.4)
   fog
   guard (= 2.13.0)
