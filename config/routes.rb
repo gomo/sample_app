@@ -13,14 +13,16 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get '/users/', to: 'users#index',   trailing_slash: true
-  resources :users, except: [:index]
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   
   resources :account_activations, only: [:edit]
-
   resources :password_resets,     only: [:new, :create, :edit, :update]
-
   resources :microposts,          only: [:create, :destroy]
-
+  resources :relationships,       only: [:create, :destroy]
 
   # get '*path', controller: 'application', action: 'render_404'
 end

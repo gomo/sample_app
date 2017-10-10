@@ -17,4 +17,33 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_match micropost.content, response.body
     end
   end
+
+  test "follow count" do
+    log_in_as(@user)
+    get root_path
+    assert_select '#following', text: "0"
+    assert_select '#followers', text: "0"
+
+    archer   = users(:archer)
+
+    @user.follow(archer)
+    get root_path
+    assert_select '#following', text: "1"
+    assert_select '#followers', text: "0"
+
+    archer.follow(@user)
+    get root_path
+    assert_select '#following', text: "1"
+    assert_select '#followers', text: "1"
+
+    @user.unfollow(archer)
+    get root_path
+    assert_select '#following', text: "0"
+    assert_select '#followers', text: "1"
+
+    archer.unfollow(@user)
+    get root_path
+    assert_select '#following', text: "0"
+    assert_select '#followers', text: "0"
+  end
 end
