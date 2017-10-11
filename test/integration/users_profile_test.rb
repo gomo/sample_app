@@ -19,31 +19,35 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   end
 
   test "follow count" do
-    log_in_as(@user)
-    get root_path
-    assert_select '#following', text: "0"
-    assert_select '#followers', text: "0"
+    user = users(:user_0)
+    other_user   = users(:user_1)
 
-    archer   = users(:archer)
+    log_in_as(user)
 
-    @user.follow(archer)
+    following_count = user.following.count
+    followers_count = user.followers.count
     get root_path
-    assert_select '#following', text: "1"
-    assert_select '#followers', text: "0"
+    assert_select '#following', text: following_count.to_s
+    assert_select '#followers', text: followers_count.to_s
 
-    archer.follow(@user)
+    user.follow(other_user)
     get root_path
-    assert_select '#following', text: "1"
-    assert_select '#followers', text: "1"
+    assert_select '#following', text: (following_count + 1).to_s
+    assert_select '#followers', text: followers_count.to_s
 
-    @user.unfollow(archer)
+    other_user.follow(user)
     get root_path
-    assert_select '#following', text: "0"
-    assert_select '#followers', text: "1"
+    assert_select '#following', text: (following_count + 1).to_s
+    assert_select '#followers', text: (followers_count + 1).to_s
 
-    archer.unfollow(@user)
+    user.unfollow(other_user)
     get root_path
-    assert_select '#following', text: "0"
-    assert_select '#followers', text: "0"
+    assert_select '#following', text: following_count.to_s
+    assert_select '#followers', text: (followers_count + 1).to_s
+
+    other_user.unfollow(user)
+    get root_path
+    assert_select '#following', text: following_count.to_s
+    assert_select '#followers', text: followers_count.to_s
   end
 end
