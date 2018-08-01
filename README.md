@@ -43,5 +43,5 @@ $ rails server
 
 ```rb
 link test
-[`this is code`](https://this_is_url/)
+([this is code](https://this_is_url/))
 ```
