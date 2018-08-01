@@ -41,16 +41,6 @@ $ rails server
 を参考にしてください。
 
 
-```rb
-link test
-([this is code](https://this_is_url/))
-```
-
-<div class="highlight highlight-html">
-  # <a href="https://this_is_url/">aaa</a>
-  <pre>
-    <div>
-      hoge
-    </div>
-  </pre>
-</div>
+<big><pre>
+**void** Click ([**Keycode**](#keycode) key) **const**
+</pre></big>
