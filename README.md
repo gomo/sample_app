@@ -41,6 +41,8 @@ $ rails server
 を参考にしてください。
 
 
-<big><pre>
+<div class="highlight highlight-source-ruby">
+<pre>
 [**これがリンクテキスト**](http://www.foo.com/)
-</pre></big>
+</pre>
+</div>
