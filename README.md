@@ -42,5 +42,5 @@ $ rails server
 
 
 <big><pre>
-**void** Click ([**Keycode**](#keycode) key) **const**
+**void** Click ([**これがリンクテキスト**](http://www.foo.com/) key) **const**
 </pre></big>
