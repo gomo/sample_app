@@ -47,8 +47,10 @@ link test
 ```
 
 <div class="highlight highlight-html">
+  # <a href="https://this_is_url/">aaa</a>
   <pre>
-    # <a href="https://this_is_url/">aaa</a>
-    aaa ffff
+    <div>
+      hoge
+    </div>
   </pre>
 </div>
