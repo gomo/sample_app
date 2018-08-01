@@ -39,3 +39,9 @@ $ rails server
 
 詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 を参考にしてください。
+
+
+```rb
+link test
+[`this is code`](https://this_is_url/)
+```
