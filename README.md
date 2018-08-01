@@ -39,15 +39,3 @@ $ rails server
 
 詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 を参考にしてください。
-
-
-<div class="highlight highlight-source-ruby">
-<pre>
-  # <a href="http://www.hoge.com/">hoge</a>
-  def foobar
-    'aaa'
-  end
-  
-  hoge = foobar
-</pre>
-</div>
