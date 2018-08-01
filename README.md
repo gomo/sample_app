@@ -43,6 +43,11 @@ $ rails server
 
 <div class="highlight highlight-source-ruby">
 <pre>
-[**これがリンクテキスト**](http://www.foo.com/)
+  # <a href="http://www.hoge.com/">hoge</a>
+  def foobar
+    'aaa'
+  end
+  
+  hoge = foobar
 </pre>
 </div>
